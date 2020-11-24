@@ -8,6 +8,8 @@ package controller;
 import static controller.LoginHandler.con;
 import static controller.LoginHandler.preparedStatement;
 import static controller.LoginHandler.resultsSet;
+import static controller.PlayInfoController.con;
+import static controller.PlayInfoController.resultsSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,14 +51,8 @@ public class RegisterHandler {
                         //check if answer is not null
                          auth = resultsSet.getInt(1);
                         System.out.println(auth);
-//			if(auth==1) {
-//                       
-//				authNum= 1;
-//			}
-//			else {
-//                                authNum=  2;
-//			}
-
+                        resultsSet.close();
+                        con.close();
 		} catch (SQLException e) {
 			
 			System.err.println(e.getMessage());
