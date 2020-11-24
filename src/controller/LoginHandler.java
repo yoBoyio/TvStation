@@ -5,6 +5,8 @@
  */
 package controller;
 
+import static controller.PlayInfoController.con;
+import static controller.PlayInfoController.resultsSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,20 +24,20 @@ import model.DatabaseConnection;
 public class LoginHandler {
     static  Connection con =null;
     static PreparedStatement preparedStatement= null;
-   static ResultSet resultsSet =null;
+    static ResultSet resultsSet =null;
        
 
-    public  static int LoginAuth(String username,String password ){
-        int authNum;
-        
+    public  static String [] LoginAuth(String username,String password ){
+        String userPin []=new String[6];
             try {
             con=DatabaseConnection.createConnection();
         } catch (Exception ex) {
             Logger.getLogger(LoginHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-            String sql="select accountlogin( ?, ?) AS answer; ";
+            String sql=" select user_username,user_password,user_name,user_surname,user_sex,user_email from accountlogin( ?, ?) AS answer; ";
 		
 		try {
+                    
                     //todo protect password
 			preparedStatement=con.prepareStatement(sql);
 			preparedStatement.setString(1,username);
@@ -43,22 +45,27 @@ public class LoginHandler {
 			resultsSet=preparedStatement.executeQuery();
                         resultsSet.next();
                         //check if answer is not null
-                        String auth = resultsSet.getString("answer");
-
-			if(auth!=null) {
-				authNum= 1;
-			}
-			else {
-                                authNum=  2;
-			}
+                        //todo get results for every column
+                        
+                        userPin[0] = resultsSet.getString("user_username");
+                        userPin[1] = resultsSet.getString("user_password");
+                        userPin[2] = resultsSet.getString("user_name");
+                        userPin[3] = resultsSet.getString("user_surname");
+                        userPin[4] = resultsSet.getString("user_sex");
+                        userPin[5] = resultsSet.getString("user_email");
+                        
+                        resultsSet.close();
+                        con.close();
 
 		} catch (SQLException e) {
 			
-			//statusLbl.setText(" lathos"+e);
 			System.err.println(e.getMessage());
-                        authNum=3;
 		}
            
-            return authNum;
+            return userPin;
+    }
+    public static String setDetails(String answer){
+        
+        return answer;
     }
 }

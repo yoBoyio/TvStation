@@ -5,6 +5,9 @@
  */
 package view;
 
+import controller.MainPageController;
+import model.ComboItem;
+
 /**
  *
  * @author dimi44
@@ -14,8 +17,47 @@ public class mainPage extends javax.swing.JFrame {
     /**
      * Creates new form mainPage
      */
-    public mainPage() {
+    String userDetails [];
+    String userName;
+    
+    public mainPage(String userDetails []) {
         initComponents();
+        this.userDetails=userDetails;
+        userName=userDetails[0];
+        usernameLbl.setText(userName);
+        displayFavorites(userName);
+        setIcon(userDetails);
+        
+    }
+
+    private void setIcon(String details[]){
+        if(details[4].equals("F")){
+            sexLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/userwoman.png")));
+        }else if (details[4].equals("M")){
+            sexLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/userman.png")));
+        }
+        else{
+            sexLbl.setText("");
+        }
+        
+    }
+    private  void displayFavorites(String username){
+        String favorites[]=MainPageController.displayFavs(username);
+        int i=0;
+        while (favorites[i]!=null) {
+            jComboBox1.addItem(new ComboItem(favorites[i],String.valueOf(i)).toString());
+            i=i+1;
+        }
+    }
+    //for every button display the infos based on text value
+   private void displayInfos(String showName){
+       
+        playInfo playinfo=new playInfo(userDetails,showName);
+        playinfo.setVisible(true);
+        dispose();
+   }
+    private mainPage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -27,35 +69,816 @@ public class mainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMenu1 = new java.awt.PopupMenu();
+        logout = new java.awt.MenuItem();
         jPanel1 = new javax.swing.JPanel();
+        usernameLbl = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        favoritesLbl = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        sexLbl = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        documentary1 = new javax.swing.JButton();
+        documentary2 = new javax.swing.JButton();
+        documentary3 = new javax.swing.JButton();
+        documentary4 = new javax.swing.JButton();
+        documentary5 = new javax.swing.JButton();
+        oldmovie2 = new javax.swing.JButton();
+        shopping1 = new javax.swing.JButton();
+        Yummy = new javax.swing.JButton();
+        shopping2 = new javax.swing.JButton();
+        maids = new javax.swing.JButton();
+        shopping3 = new javax.swing.JButton();
+        learning = new javax.swing.JButton();
+        nemo = new javax.swing.JButton();
+        pirates = new javax.swing.JButton();
+        bigbrother1 = new javax.swing.JButton();
+        oldmovie1 = new javax.swing.JButton();
+        anonymous = new javax.swing.JButton();
+        bigbrother2 = new javax.swing.JButton();
+        transformers = new javax.swing.JButton();
+        piranhas = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        news8 = new javax.swing.JButton();
+        news9 = new javax.swing.JButton();
+        news10 = new javax.swing.JButton();
+        news11 = new javax.swing.JButton();
+        news12 = new javax.swing.JButton();
+        news13 = new javax.swing.JButton();
+        news14 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        captainAmerica = new javax.swing.JButton();
+        bigbrother5 = new javax.swing.JButton();
+        smurfs = new javax.swing.JButton();
+        toystory = new javax.swing.JButton();
+        worldparty2 = new javax.swing.JButton();
+        minions = new javax.swing.JButton();
+        lionking = new javax.swing.JButton();
+        news3 = new javax.swing.JButton();
+        news2 = new javax.swing.JButton();
+        news7 = new javax.swing.JButton();
+        news6 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        news1 = new javax.swing.JButton();
+        news4 = new javax.swing.JButton();
+        news5 = new javax.swing.JButton();
+        Mickey = new javax.swing.JButton();
+        mickey2 = new javax.swing.JButton();
+        mickey3 = new javax.swing.JButton();
+        mickey4 = new javax.swing.JButton();
+        mickey5 = new javax.swing.JButton();
+        looney = new javax.swing.JButton();
+        pokemon = new javax.swing.JButton();
+        Yummy1 = new javax.swing.JButton();
+
+        popupMenu1.setLabel("popupMenu1");
+
+        logout.setLabel("menuItem1");
+        popupMenu1.add(logout);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
+        usernameLbl.setFont(new java.awt.Font("Ebrima", 1, 11)); // NOI18N
+        usernameLbl.setText("username");
+        usernameLbl.setPreferredSize(new java.awt.Dimension(100, 15));
+
+        jButton1.setText("Log Out");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        favoritesLbl.setText("Favorites: ");
+
+        jComboBox1.setMaximumRowCount(30);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show" }));
+        jComboBox1.setOpaque(false);
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        sexLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/userman.png"))); // NOI18N
+        sexLbl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sexLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sexLblMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(favoritesLbl)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(128, 128, 128)
+                .addComponent(usernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sexLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addGap(12, 12, 12))
+                                .addComponent(usernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(favoritesLbl)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(sexLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
 
         jPanel2.setBackground(new java.awt.Color(20, 32, 37));
+
+        documentary1.setText("Amazon");
+        documentary1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentary1ActionPerformed(evt);
+            }
+        });
+
+        documentary2.setText("Arctic");
+        documentary2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentary2ActionPerformed(evt);
+            }
+        });
+
+        documentary3.setText("Savana");
+        documentary3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentary3ActionPerformed(evt);
+            }
+        });
+
+        documentary4.setText("Sealife");
+        documentary4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentary4ActionPerformed(evt);
+            }
+        });
+
+        documentary5.setText("Birds");
+        documentary5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                documentary5ActionPerformed(evt);
+            }
+        });
+
+        oldmovie2.setText("His Girl Friday");
+        oldmovie2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oldmovie2ActionPerformed(evt);
+            }
+        });
+
+        shopping1.setText("Shopping");
+        shopping1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shopping1ActionPerformed(evt);
+            }
+        });
+
+        Yummy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Yummy.jpg"))); // NOI18N
+        Yummy.setText("Yummy");
+        Yummy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Yummy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YummyActionPerformed(evt);
+            }
+        });
+
+        shopping2.setText("Shopping");
+        shopping2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shopping2ActionPerformed(evt);
+            }
+        });
+
+        maids.setText("Maids");
+        maids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maidsActionPerformed(evt);
+            }
+        });
+
+        shopping3.setText("Shopping");
+        shopping3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shopping3ActionPerformed(evt);
+            }
+        });
+
+        learning.setText("L-earn");
+        learning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                learningActionPerformed(evt);
+            }
+        });
+
+        nemo.setText("Nemo");
+        nemo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nemoActionPerformed(evt);
+            }
+        });
+
+        pirates.setText("Pirates");
+        pirates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                piratesActionPerformed(evt);
+            }
+        });
+
+        bigbrother1.setText("Big Brother");
+        bigbrother1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bigbrother1ActionPerformed(evt);
+            }
+        });
+
+        oldmovie1.setText("Psycho");
+        oldmovie1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oldmovie1ActionPerformed(evt);
+            }
+        });
+
+        anonymous.setText("V for Vendetta");
+        anonymous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anonymousActionPerformed(evt);
+            }
+        });
+
+        bigbrother2.setText("Big Brother");
+        bigbrother2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bigbrother2ActionPerformed(evt);
+            }
+        });
+
+        transformers.setText("Transformers");
+        transformers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transformersActionPerformed(evt);
+            }
+        });
+
+        piranhas.setText("Piranhas");
+        piranhas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                piranhasActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Tuesday");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Monday");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Wednesday");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Thursday");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Friday");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Saturday");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Sunday");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("14-16");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("10-12");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("16-18");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("22-24");
+
+        news8.setText("news");
+        news8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news8ActionPerformed(evt);
+            }
+        });
+
+        news9.setText("news");
+        news9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news9ActionPerformed(evt);
+            }
+        });
+
+        news10.setText("news");
+        news10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news10ActionPerformed(evt);
+            }
+        });
+
+        news11.setText("news");
+        news11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news11ActionPerformed(evt);
+            }
+        });
+
+        news12.setText("news");
+        news12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news12ActionPerformed(evt);
+            }
+        });
+
+        news13.setText("news");
+        news13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news13ActionPerformed(evt);
+            }
+        });
+
+        news14.setText("news");
+        news14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news14ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("18-20");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("20-22");
+
+        captainAmerica.setText("Captain America");
+        captainAmerica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                captainAmericaActionPerformed(evt);
+            }
+        });
+
+        bigbrother5.setText("World Party");
+        bigbrother5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bigbrother5ActionPerformed(evt);
+            }
+        });
+
+        smurfs.setText("Smurfs");
+        smurfs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smurfsActionPerformed(evt);
+            }
+        });
+
+        toystory.setText("Toy Story");
+        toystory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toystoryActionPerformed(evt);
+            }
+        });
+
+        worldparty2.setText("World Party");
+        worldparty2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                worldparty2ActionPerformed(evt);
+            }
+        });
+
+        minions.setText("Minions");
+        minions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minionsActionPerformed(evt);
+            }
+        });
+
+        lionking.setText("Lion King");
+        lionking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lionkingActionPerformed(evt);
+            }
+        });
+
+        news3.setText("news");
+        news3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news3ActionPerformed(evt);
+            }
+        });
+
+        news2.setText("news");
+        news2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news2ActionPerformed(evt);
+            }
+        });
+
+        news7.setText("news");
+        news7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news7ActionPerformed(evt);
+            }
+        });
+
+        news6.setText("news");
+        news6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news6ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("12-14");
+
+        news1.setText("news");
+        news1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news1ActionPerformed(evt);
+            }
+        });
+
+        news4.setText("news");
+        news4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news4ActionPerformed(evt);
+            }
+        });
+
+        news5.setText("news");
+        news5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                news5ActionPerformed(evt);
+            }
+        });
+
+        Mickey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Mickey.jpg"))); // NOI18N
+        Mickey.setText("Mickey");
+        Mickey.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Mickey.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MickeyItemStateChanged(evt);
+            }
+        });
+        Mickey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MickeyActionPerformed(evt);
+            }
+        });
+
+        mickey2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Mickey.jpg"))); // NOI18N
+        mickey2.setText("Mickey");
+        mickey2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mickey2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mickey2ActionPerformed(evt);
+            }
+        });
+
+        mickey3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Mickey.jpg"))); // NOI18N
+        mickey3.setText("Mickey");
+        mickey3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mickey3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mickey3ActionPerformed(evt);
+            }
+        });
+
+        mickey4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Mickey.jpg"))); // NOI18N
+        mickey4.setText("Mickey");
+        mickey4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mickey4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mickey4ActionPerformed(evt);
+            }
+        });
+
+        mickey5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Mickey.jpg"))); // NOI18N
+        mickey5.setText("Mickey");
+        mickey5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mickey5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mickey5ActionPerformed(evt);
+            }
+        });
+
+        looney.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Looney Tunes.jpg"))); // NOI18N
+        looney.setText("Looney Tunes");
+        looney.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        looney.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                looneyActionPerformed(evt);
+            }
+        });
+
+        pokemon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Pokemon.jpg"))); // NOI18N
+        pokemon.setText("Pokemon");
+        pokemon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pokemon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pokemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pokemonActionPerformed(evt);
+            }
+        });
+
+        Yummy1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Yummy.jpg"))); // NOI18N
+        Yummy1.setText("Yummy");
+        Yummy1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Yummy1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Yummy1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel4)
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel3)
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel5)
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel6)
+                        .addGap(126, 126, 126)
+                        .addComponent(jLabel7)
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel8)
+                        .addGap(127, 127, 127)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(shopping1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Yummy, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(shopping2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(maids, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(shopping3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(oldmovie2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(nemo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(documentary1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(documentary2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(documentary3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(documentary4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(documentary5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(learning, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Yummy1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(Mickey, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mickey2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mickey3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mickey4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mickey5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(looney, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pokemon, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(news8, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news9, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news10, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news11, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news12, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news13, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news14, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(news1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(news7, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(pirates, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(bigbrother1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(oldmovie1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(captainAmerica, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(bigbrother5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(smurfs, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(toystory, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(worldparty2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(minions, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lionking, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(bigbrother2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(anonymous, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(transformers, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(piranhas, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel4))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(Mickey, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mickey2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mickey3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mickey4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mickey5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(looney, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pokemon, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(news2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(documentary2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(documentary4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(documentary1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(documentary5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(documentary3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(learning, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(Yummy1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Yummy, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maids, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shopping1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nemo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shopping3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shopping2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oldmovie2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(news9, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news14, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news11, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news13, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(news12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bigbrother5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(captainAmerica, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lionking, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toystory, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minions, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(smurfs, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(worldparty2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bigbrother1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pirates, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piranhas, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bigbrother2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transformers, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oldmovie1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anonymous, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -69,12 +892,343 @@ public class mainPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        home newhome=new home();
+        newhome.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void YummyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YummyActionPerformed
+        String showName=Yummy.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_YummyActionPerformed
+
+    private void MickeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MickeyActionPerformed
+        String showName=Mickey.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_MickeyActionPerformed
+
+    private void mickey2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mickey2ActionPerformed
+        String showName=mickey2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_mickey2ActionPerformed
+
+    private void mickey3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mickey3ActionPerformed
+        // TODO add your handling code here:
+        String showName=mickey3.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_mickey3ActionPerformed
+
+    private void mickey4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mickey4ActionPerformed
+        // TODO add your handling code here:
+        String showName=mickey4.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_mickey4ActionPerformed
+
+    private void mickey5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mickey5ActionPerformed
+        // TODO add your handling code here:
+        String showName=mickey5.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_mickey5ActionPerformed
+
+    private void looneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_looneyActionPerformed
+        // TODO add your handling code here:
+        String showName=looney.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_looneyActionPerformed
+
+    private void pokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemonActionPerformed
+        // TODO add your handling code here:
+        String showName=pokemon.getText();
+        displayInfos(showName);      
+    }//GEN-LAST:event_pokemonActionPerformed
+
+    private void Yummy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Yummy1ActionPerformed
+        // TODO add your handling code here:
+         String showName=Yummy1.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_Yummy1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+     
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+        
+    }//GEN-LAST:event_jComboBox1MouseClicked
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+
+        if(jComboBox1.getSelectedItem()!=null){   
+            String value=jComboBox1.getSelectedItem().toString();
+              System.out.println(value);
+            if(!value.equals("Show")){
+                playInfo info=new playInfo(userDetails,value);
+                info.setVisible(true);
+                jComboBox1.removeAllItems();
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    private void displayFavs(String value){
+       
+    }
+    private void MickeyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MickeyItemStateChanged
+         
+    }//GEN-LAST:event_MickeyItemStateChanged
+
+    private void news1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news1ActionPerformed
+        // TODO add your handling code here:
+        String showName=news1.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news1ActionPerformed
+
+    private void news2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news2ActionPerformed
+        // TODO add your handling code here:
+        String showName=news2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news2ActionPerformed
+
+    private void news3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news3ActionPerformed
+        // TODO add your handling code here:
+        String showName=news3.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news3ActionPerformed
+
+    private void news4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news4ActionPerformed
+        // TODO add your handling code here:
+        String showName=news4.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news4ActionPerformed
+
+    private void news5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news5ActionPerformed
+        // TODO add your handling code here:
+        String showName=news5.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news5ActionPerformed
+
+    private void news6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news6ActionPerformed
+        // TODO add your handling code here:
+         String showName=news6.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news6ActionPerformed
+
+    private void news7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news7ActionPerformed
+        // TODO add your handling code here:
+         String showName=news7.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news7ActionPerformed
+
+    private void documentary1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentary1ActionPerformed
+        // TODO add your handling code here:
+         String showName=documentary1.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_documentary1ActionPerformed
+
+    private void documentary2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentary2ActionPerformed
+        // TODO add your handling code here:
+         String showName=documentary2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_documentary2ActionPerformed
+
+    private void documentary3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentary3ActionPerformed
+        // TODO add your handling code here:
+         String showName=documentary3.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_documentary3ActionPerformed
+
+    private void documentary4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentary4ActionPerformed
+        // TODO add your handling code here:
+         String showName=documentary4.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_documentary4ActionPerformed
+
+    private void documentary5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentary5ActionPerformed
+        // TODO add your handling code here:
+         String showName=documentary5.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_documentary5ActionPerformed
+
+    private void learningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_learningActionPerformed
+        // TODO add your handling code here:
+         String showName=learning.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_learningActionPerformed
+
+    private void shopping1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopping1ActionPerformed
+        // TODO add your handling code here:
+         String showName=shopping1.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_shopping1ActionPerformed
+
+    private void shopping2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopping2ActionPerformed
+        // TODO add your handling code here:
+         String showName=shopping2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_shopping2ActionPerformed
+
+    private void maidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maidsActionPerformed
+        // TODO add your handling code here:
+         String showName=maids.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_maidsActionPerformed
+
+    private void shopping3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopping3ActionPerformed
+        // TODO add your handling code here:
+         String showName=shopping3.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_shopping3ActionPerformed
+
+    private void oldmovie2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldmovie2ActionPerformed
+        // TODO add your handling code here:
+         String showName=oldmovie2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_oldmovie2ActionPerformed
+
+    private void nemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nemoActionPerformed
+        // TODO add your handling code here:
+         String showName=nemo.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_nemoActionPerformed
+
+    private void news8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news8ActionPerformed
+        // TODO add your handling code here:
+         String showName=news8.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news8ActionPerformed
+
+    private void news9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news9ActionPerformed
+        // TODO add your handling code here:
+         String showName=news9.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news9ActionPerformed
+
+    private void news10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news10ActionPerformed
+        // TODO add your handling code here:
+         String showName=news10.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news10ActionPerformed
+
+    private void news11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news11ActionPerformed
+        // TODO add your handling code here:
+         String showName=news11.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news11ActionPerformed
+
+    private void news12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news12ActionPerformed
+        // TODO add your handling code here:
+         String showName=news12.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news12ActionPerformed
+
+    private void news13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news13ActionPerformed
+        // TODO add your handling code here:
+         String showName=news13.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news13ActionPerformed
+
+    private void news14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_news14ActionPerformed
+        // TODO add your handling code here:
+         String showName=news14.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_news14ActionPerformed
+
+    private void captainAmericaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_captainAmericaActionPerformed
+        // TODO add your handling code here:
+         String showName=captainAmerica.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_captainAmericaActionPerformed
+
+    private void bigbrother5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bigbrother5ActionPerformed
+        // TODO add your handling code here:
+         String showName=bigbrother5.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_bigbrother5ActionPerformed
+
+    private void smurfsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smurfsActionPerformed
+        // TODO add your handling code here:
+         String showName=smurfs.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_smurfsActionPerformed
+
+    private void toystoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toystoryActionPerformed
+        // TODO add your handling code here:
+         String showName=toystory.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_toystoryActionPerformed
+
+    private void worldparty2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_worldparty2ActionPerformed
+        // TODO add your handling code here:
+         String showName=worldparty2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_worldparty2ActionPerformed
+
+    private void minionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minionsActionPerformed
+        // TODO add your handling code here:
+         String showName=minions.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_minionsActionPerformed
+
+    private void lionkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lionkingActionPerformed
+        // TODO add your handling code here:
+         String showName=lionking.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_lionkingActionPerformed
+
+    private void piratesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_piratesActionPerformed
+        // TODO add your handling code here:
+         String showName=pirates.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_piratesActionPerformed
+
+    private void bigbrother1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bigbrother1ActionPerformed
+        // TODO add your handling code here:
+         String showName=bigbrother1.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_bigbrother1ActionPerformed
+
+    private void oldmovie1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldmovie1ActionPerformed
+        // TODO add your handling code here:
+         String showName=oldmovie1.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_oldmovie1ActionPerformed
+
+    private void bigbrother2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bigbrother2ActionPerformed
+        // TODO add your handling code here:
+         String showName=bigbrother2.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_bigbrother2ActionPerformed
+
+    private void anonymousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anonymousActionPerformed
+        // TODO add your handling code here:
+         String showName=anonymous.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_anonymousActionPerformed
+
+    private void transformersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transformersActionPerformed
+        // TODO add your handling code here:
+         String showName=transformers.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_transformersActionPerformed
+
+    private void piranhasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_piranhasActionPerformed
+        // TODO add your handling code here:
+         String showName=piranhas.getText();
+        displayInfos(showName);
+    }//GEN-LAST:event_piranhasActionPerformed
+
+    private void sexLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sexLblMouseClicked
+        userPage userp=new userPage(userDetails);
+        userp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_sexLblMouseClicked
 
     /**
      * @param args the command line arguments
@@ -112,7 +1266,77 @@ public class mainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Mickey;
+    private javax.swing.JButton Yummy;
+    private javax.swing.JButton Yummy1;
+    private javax.swing.JButton anonymous;
+    private javax.swing.JButton bigbrother1;
+    private javax.swing.JButton bigbrother2;
+    private javax.swing.JButton bigbrother5;
+    private javax.swing.JButton captainAmerica;
+    private javax.swing.JButton documentary1;
+    private javax.swing.JButton documentary2;
+    private javax.swing.JButton documentary3;
+    private javax.swing.JButton documentary4;
+    private javax.swing.JButton documentary5;
+    private javax.swing.JLabel favoritesLbl;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton learning;
+    private javax.swing.JButton lionking;
+    private java.awt.MenuItem logout;
+    private javax.swing.JButton looney;
+    private javax.swing.JButton maids;
+    private javax.swing.JButton mickey2;
+    private javax.swing.JButton mickey3;
+    private javax.swing.JButton mickey4;
+    private javax.swing.JButton mickey5;
+    private javax.swing.JButton minions;
+    private javax.swing.JButton nemo;
+    private javax.swing.JButton news1;
+    private javax.swing.JButton news10;
+    private javax.swing.JButton news11;
+    private javax.swing.JButton news12;
+    private javax.swing.JButton news13;
+    private javax.swing.JButton news14;
+    private javax.swing.JButton news2;
+    private javax.swing.JButton news3;
+    private javax.swing.JButton news4;
+    private javax.swing.JButton news5;
+    private javax.swing.JButton news6;
+    private javax.swing.JButton news7;
+    private javax.swing.JButton news8;
+    private javax.swing.JButton news9;
+    private javax.swing.JButton oldmovie1;
+    private javax.swing.JButton oldmovie2;
+    private javax.swing.JButton piranhas;
+    private javax.swing.JButton pirates;
+    private javax.swing.JButton pokemon;
+    private java.awt.PopupMenu popupMenu1;
+    private javax.swing.JLabel sexLbl;
+    private javax.swing.JButton shopping1;
+    private javax.swing.JButton shopping2;
+    private javax.swing.JButton shopping3;
+    private javax.swing.JButton smurfs;
+    private javax.swing.JButton toystory;
+    private javax.swing.JButton transformers;
+    private javax.swing.JLabel usernameLbl;
+    private javax.swing.JButton worldparty2;
     // End of variables declaration//GEN-END:variables
 }

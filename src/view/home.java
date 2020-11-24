@@ -179,7 +179,7 @@ public class home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -201,30 +201,20 @@ public class home extends javax.swing.JFrame {
             
         }else{
         
-        int auth=LoginHandler.LoginAuth(username,password);
-        switch(auth){
-            case 1:
-                errorLbl.setText("connected");
-                //todo open home panel
+            String userPin[]=LoginHandler.LoginAuth(username,password);
+            if(userPin!=null){
+                
                 dispose();
-                mainPage mainpage =new mainPage();
+                mainPage mainpage =new mainPage(userPin);
                 mainpage.setVisible(true);
-                break;
-            case 2:
+             }
+            else if(userPin==null){
                 errorLbl.setText("Λανθασμενα στοιχεια");
-                break;
-            case 3:
-                errorLbl.setText("Δεν υπαρχει συνδεση στην βαση");                
-                break;
-            default:
-                    errorLbl.setText("Something went wrong ");
-                    break;
-        }
-
-        
-      usernameTxt.setText("");
-      passwordTxt.setText("");
-                }
+                usernameTxt.setText("");
+                passwordTxt.setText("");
+            }
+            
+         }
 
     }//GEN-LAST:event_loginBtnActionPerformed
 
@@ -243,79 +233,58 @@ public class home extends javax.swing.JFrame {
     private void usernameTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTxtKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-             String username=usernameTxt.getText();
+            String username=usernameTxt.getText();
         //decode pass 
 	String password= String.valueOf(passwordTxt.getPassword());
 
         if(username.isEmpty() || password.isEmpty()) {
-        errorLbl.setText("Εισαγετε τα στοιεχεια σας");
-        
+            errorLbl.setText("Εισαγετε τα στοιχεια σας");
+            
         }else{
-        int auth=LoginHandler.LoginAuth(username,password);
-        switch(auth){
-            case 1:
-                errorLbl.setText("connected");
-                //todo open home panel
-                dispose();
-                 mainPage mainpage =new mainPage();
-                mainpage.setVisible(true);
-                
-                break;
-            case 2:
-                errorLbl.setText("Λανθασμενα στοιχεια");
-                break;
-            case 3:
-                errorLbl.setText("Δεν υπαρχει συνδεση στην βαση");                
-                break;
-            default:
-                    errorLbl.setText("Something went wrong ");
-                    break;
-        }
-
         
-      usernameTxt.setText("");
-      passwordTxt.setText("");
-        }
+            String userPin[]=LoginHandler.LoginAuth(username,password);
+            if(userPin!=null){
+                
+                dispose();
+                mainPage mainpage =new mainPage(userPin);
+                mainpage.setVisible(true);
+             }
+            else if(userPin==null){
+                errorLbl.setText("Λανθασμενα στοιχεια");
+                usernameTxt.setText("");
+                passwordTxt.setText("");
+            }
+            
+         }
        }
     }//GEN-LAST:event_usernameTxtKeyPressed
 
     private void passwordTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTxtKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-             String username=usernameTxt.getText();
+              String username=usernameTxt.getText();
         //decode pass 
 	String password= String.valueOf(passwordTxt.getPassword());
 
         if(username.isEmpty() || password.isEmpty()) {
-        errorLbl.setText("Εισαγετε τα στοιεχεια σας");
-        
+            errorLbl.setText("Εισαγετε τα στοιχεια σας");
+            
         }else{
-        int auth=LoginHandler.LoginAuth(username,password);
-        switch(auth){
-            case 1:
-                errorLbl.setText("connected");
-                //todo open home panel
-                dispose();
-                 mainPage mainpage =new mainPage();
-                mainpage.setVisible(true);
-                
-                break;
-            case 2:
-                errorLbl.setText("Λανθασμενα στοιχεια");
-                break;
-            case 3:
-                errorLbl.setText("Δεν υπαρχει συνδεση στην βαση");                
-                break;
-         
-            default:
-                    errorLbl.setText("Something went wrong ");
-                    break;
-        }
-
         
-      usernameTxt.setText("");
-      passwordTxt.setText("");
-        }
+            String userPin[]=LoginHandler.LoginAuth(username,password);
+            if(userPin!=null){
+                
+                dispose();
+                mainPage mainpage =new mainPage(userPin);
+                mainpage.setVisible(true);
+             }
+            else if(userPin==null){
+                errorLbl.setText("Λανθασμενα στοιχεια");
+                usernameTxt.setText("");
+                passwordTxt.setText("");
+            }
+            
+         }
     }
     }//GEN-LAST:event_passwordTxtKeyPressed
 
